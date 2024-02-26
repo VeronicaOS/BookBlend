@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="This is the page for the social media application BookBlend. On this page you will find the feed for BookBlend where people will post about books they have read."
+        />
+        <title>Veronica O. Svensson | BookBlend</title>
+        <link rel="stylesheet" href="../dist/css/index.css" />
+        <script
+            src="https://kit.fontawesome.com/5b97174c12.js"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body class="vh-100 vw-100">
+        <header>
+            <div class="container-fluid p-0">
+                <div
+                    class="py-3 bg-primary d-flex justify-content-between align-items-center"
+                >
+                    <div class="mx-4">
+                        <h1 class="text-center m-0 fs-4 text-white">
+                            BookBlend
+                        </h1>
+                    </div>
+                    <div class="d-flex gap-3 justify-content-center">
+                        <div class="input-group w-50 align">
+                            <div
+                                class="form-outline align-self-center"
+                                data-mdb-input-init
+                            >
+                                <input
+                                    type="search"
+                                    id="form1"
+                                    class="form-control py-1"
+                                    placeholder="search"
+                                />
+                                <label class="form-label" for="form1"></label>
+                            </div>
+                        </div>
+                        <div>
+                            <a
+                                class="text-decoration-none text-white"
+                                href="../index.html"
+                                >Sign out</a
+                            >
+                            <i
+                                class="fa fa-caret-down text-white"
+                                aria-hidden="true"
+                            ></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row vw-100 m-0 text-center py-2 bg-secondary">
+                    <a
+                        href="../profile/index.html"
+                        class="col text-decoration-none text-black"
+                        >Profile</a
+                    >
+                    <div
+                        class="col border-start border-customgrey text-primary"
+                    >
+                        Feed
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <img
+                class="container-fluid p-0"
+                src="../images/books.jpg"
+                alt="A row of different books in two bookshelves side by side."
+            />
+            <div class="container">
+                <div class="row pb-5 border-bottom">
+                    <div class="col-lg-4 col-md-3 col-1"></div>
+                    <form
+                        class="mt-5 p-4 rounded-2 bg-primary col-lg-4 col-md-6 col-10"
+                    >
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1"
+                                >Which book have you read?</label
+                            >
+                            <input
+                                type="subject"
+                                class="form-control mb-3 mt-1"
+                                id="exampleFormControlInput1"
+                                placeholder="title"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1"
+                                >What are your thoughts?</label
+                            >
+                            <textarea
+                                class="form-control mb-3 mt-1"
+                                id="exampleFormControlTextarea1"
+                                rows="3"
+                            ></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-customwhite mt-2">
+                            Publish
+                        </button>
+                    </form>
+                    <div class="col-lg-4 col-md-3 col-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 col-1"></div>
+                    <div class="d-flex mt-5 p-0 col-md-8 col-10">
+                        <select
+                            name="sort-by"
+                            id="sort-by"
+                            class="btn btn-secondary text-primary"
+                        >
+                            <option value="newest">Newest posts</option>
+                            <option value="oldest">Oldest Posts</option>
+                            <option value="popularity">Popularity</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2 col-1"></div>
+                </div>
+
+                <div class="my-5">
+                    <div class="row">
+                        <div class="col-md-2 col-1"></div>
+                        <div class="card mb-4 p-0 col-md-8 col-10">
+                            <div class="row g-0 bg-secondary p-md-4">
+                                <div class="col-2">
+                                    <img
+                                        src="../images/pngfind.com-user-icon-png-938537.png"
+                                        class="w-75 m-3"
+                                        alt="silhouette of user icon."
+                                    />
+                                    <p class="text-center">Name</p>
+                                </div>
+                                <div class="col-10">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Lorem Ipsum</h5>
+                                        <p class="card-text">
+                                            Lorem ipsum dolor sit amet,
+                                            consectetur adipiscing elit, sed do
+                                            eiusmod tempor incididunt ut labore
+                                            et dolore magna aliqua. Purus ut
+                                            faucibus pulvinar elementum...
+                                        </p>
+                                        <div>
+                                            <a
+                                                href="#"
+                                                class="card-text text-primary"
+                                            >
+                                                Read more
+                                            </a>
+                                            <div class="d-flex gap-4 mt-2">
+                                                <p class="m-0">5 likes</p>
+                                                <p class="m-0">0 comments</p>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">
+                                            <small class="text-muted"
+                                                >Posted 2 hours ago</small
+                                            >
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-1"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2 col-1"></div>
+                        <div class="card mb-4 p-0 col-md-8 col-10">
+                            <div class="row g-0 bg-secondary p-md-4">
+                                <div class="col-2">
+                                    <img
+                                        src="../images/pngfind.com-user-icon-png-938537.png"
+                                        class="w-75 m-3"
+                                        alt="silhouette of user icon."
+                                    />
+                                    <p class="text-center">Name</p>
+                                </div>
+                                <div class="col-10">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Lorem Ipsum</h5>
+                                        <p class="card-text">
+                                            Lorem ipsum dolor sit amet,
+                                            consectetur adipiscing elit, sed do
+                                            eiusmod tempor incididunt ut labore
+                                            et dolore magna aliqua. Purus ut
+                                            faucibus pulvinar elementum...
+                                        </p>
+                                        <div>
+                                            <a
+                                                href="#"
+                                                class="card-text text-primary"
+                                            >
+                                                Read more
+                                            </a>
+                                            <div class="d-flex gap-4 mt-2">
+                                                <p class="m-0">15 likes</p>
+                                                <p class="m-0">2 comments</p>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">
+                                            <small class="text-muted"
+                                                >Posted 10 hours ago</small
+                                            >
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-1"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2 col-1"></div>
+                        <div class="card mb-4 p-0 col-md-8 col-10">
+                            <div class="row g-0 bg-secondary p-md-4">
+                                <div class="col-2">
+                                    <img
+                                        src="../images/pngfind.com-user-icon-png-938537.png"
+                                        class="w-75 m-3"
+                                        alt="silhouette of user icon."
+                                    />
+                                    <p class="text-center">Name</p>
+                                </div>
+                                <div class="col-10">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Lorem Ipsum</h5>
+                                        <p class="card-text">
+                                            Lorem ipsum dolor sit amet,
+                                            consectetur adipiscing elit, sed do
+                                            eiusmod tempor incididunt ut labore
+                                            et dolore magna aliqua. Purus ut
+                                            faucibus pulvinar elementum...
+                                        </p>
+                                        <div>
+                                            <a
+                                                href="#"
+                                                class="card-text text-primary"
+                                            >
+                                                Read more
+                                            </a>
+                                            <div class="d-flex gap-4 mt-2">
+                                                <p class="m-0">30 likes</p>
+                                                <p class="m-0">21 comments</p>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">
+                                            <small class="text-muted"
+                                                >Posted 1 day ago</small
+                                            >
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-1"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2 col-1"></div>
+                        <div class="card mb-4 p-0 col-md-8 col-10">
+                            <div class="row g-0 bg-secondary p-md-4">
+                                <div class="col-2">
+                                    <img
+                                        src="../images/pngfind.com-user-icon-png-938537.png"
+                                        class="w-75 m-3"
+                                        alt="silhouette of user icon."
+                                    />
+                                    <p class="text-center">Name</p>
+                                </div>
+                                <div class="col-10">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Lorem Ipsum</h5>
+                                        <p class="card-text">
+                                            Lorem ipsum dolor sit amet,
+                                            consectetur adipiscing elit, sed do
+                                            eiusmod tempor incididunt ut labore
+                                            et dolore magna aliqua. Purus ut
+                                            faucibus pulvinar elementum...
+                                        </p>
+                                        <div>
+                                            <a
+                                                href="#"
+                                                class="card-text text-primary"
+                                            >
+                                                Read more
+                                            </a>
+                                            <div class="d-flex gap-4 mt-2">
+                                                <p class="m-0">107 likes</p>
+                                                <p class="m-0">43 comments</p>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">
+                                            <small class="text-muted"
+                                                >Posted 1 day ago</small
+                                            >
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-1"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2 col-1"></div>
+                        <div class="card mb-4 p-0 col-md-8 col-10">
+                            <div class="row g-0 bg-secondary p-md-4">
+                                <div class="col-2">
+                                    <img
+                                        src="../images/pngfind.com-user-icon-png-938537.png"
+                                        class="w-75 m-3"
+                                        alt="silhouette of user icon."
+                                    />
+                                    <p class="text-center">Name</p>
+                                </div>
+                                <div class="col-10">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Lorem Ipsum</h5>
+                                        <p class="card-text">
+                                            Lorem ipsum dolor sit amet,
+                                            consectetur adipiscing elit, sed do
+                                            eiusmod tempor incididunt ut labore
+                                            et dolore magna aliqua. Purus ut
+                                            faucibus pulvinar elementum...
+                                        </p>
+                                        <div>
+                                            <a
+                                                href="#"
+                                                class="card-text text-primary"
+                                            >
+                                                Read more
+                                            </a>
+                                            <div class="d-flex gap-4 mt-2">
+                                                <p class="m-0">96 likes</p>
+                                                <p class="m-0">34 comments</p>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">
+                                            <small class="text-muted"
+                                                >Posted 2 days ago</small
+                                            >
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-1"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="bg-primary p-3 text-center">
+                <div class="copyright">
+                    <p>© 2018 BookBlend.</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
