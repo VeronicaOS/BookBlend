@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="This is the login page for the social media application BookBlend."
+        />
+        <title>Veronica O. Svensson | BookBlend</title>
+        <link rel="stylesheet" href="dist/css/index.css" />
+    </head>
+    <body class="vh-100 text-white bg-secondary">
+        <header>
+            <div class="container-fluid py-3 bg-primary">
+                <h1 class="text-center m-0 fs-4">BookBlend</h1>
+            </div>
+        </header>
+        <main>
+            <div
+                class="container p-5 d-flex flex-column justify-content-center align-items-center"
+            >
+                <h2 class="text-black mt-5">Welcome</h2>
+                <form action="/profile/" class="mt-5 p-4 rounded-2 bg-primary">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label"
+                            >Email address</label
+                        >
+                        <input
+                            type="email"
+                            class="form-control"
+                            id="exampleInputEmail1"
+                            aria-describedby="emailHelp"
+                            required
+                        />
+                        <div id="emailHelp" class="form-text">
+                            We'll never share your email with anyone else.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label"
+                            >Password</label
+                        >
+                        <input
+                            type="password"
+                            class="form-control"
+                            id="exampleInputPassword1"
+                            minlength="8"
+                            required
+                        />
+                        <a id="passwordHelp" class="form-text" href="#"
+                            >Forgot your password?</a
+                        >
+                    </div>
+                    <button type="submit" class="btn btn-customwhite mt-2">
+                        Log in
+                    </button>
+                </form>
+            </div>
+        </main>
+        <footer></footer>
+    </body>
+</html>
