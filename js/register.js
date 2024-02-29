@@ -1,16 +1,23 @@
-const logInForm = document.getElementById("register-form");
+const registerForm = document.getElementById("register-form");
+const nameInput = document.getElementById("name-input");
 const emailInput = document.getElementById("email-input");
 const passwordInput = document.getElementById("password-input");
+const bannerInput = document.getElementById("banner-input");
+const avatarInput = document.getElementById("avatar-input");
 
-logInForm.addEventListener("submit", function (event) {
+registerForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const body = {
+        name: nameInput.value,
         email: emailInput.value,
         password: passwordInput.value,
+        banner: bannerInput.value,
+        avatar: avatarInput.value
     };
 
     logInRequest(body);
+    console.log(body)
 });
 
 async function logInRequest(body) {
