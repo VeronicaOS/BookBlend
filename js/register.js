@@ -12,15 +12,15 @@ registerForm.addEventListener("submit", function (event) {
         name: nameInput.value,
         email: emailInput.value,
         password: passwordInput.value,
-        banner: bannerInput.value,
-        avatar: avatarInput.value
+        // banner: bannerInput.value,
+        // avatar: avatarInput.value
     };
 
-    logInRequest(body);
-    console.log(body)
+    registerRequest(body);
+    console.log(body);
 });
 
-async function logInRequest(body) {
+async function registerRequest(body) {
     body = JSON.stringify(body);
     const method = "post";
     const url = "https://v2.api.noroff.dev/auth/register";

@@ -31,10 +31,10 @@ async function logInRequest(body) {
     console.log(data);
 
     if (response.ok) {
-        const { accsessToken: token, ...profile } = data.data;
+        const { accessToken: token, ...profile } = data.data;
         console.log(token);
         console.log(profile);
-        localStorage.setItem("token", token);
+        localStorage.setItem("token", JSON.stringify(token));
         localStorage.setItem("profile", JSON.stringify(profile));
 
         window.location.href = "/profile";
