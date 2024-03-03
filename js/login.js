@@ -37,6 +37,6 @@ async function logInRequest(body) {
         localStorage.setItem("token", JSON.stringify(token));
         localStorage.setItem("profile", JSON.stringify(profile));
 
-        window.location.href = "/profile";
+        window.location.href = "/profile/?name=" + profile.name;
     }
 }
