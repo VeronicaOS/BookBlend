@@ -108,3 +108,5 @@ const postsContainer = document.getElementById("post-container");
 posts.forEach((post) => {
     postsContainer.innerHTML += createPost(post);
 });
+
+console.log(posts);
