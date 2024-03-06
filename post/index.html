@@ -70,49 +70,42 @@
         </header>
 
         <main>
-            <div class="container">
+            <div class="container mt-5">
                 <div class="row pb-5 border-bottom">
-                    <div class="col-lg-4 col-md-3 col-1"></div>
-                    <form
-                        class="mt-5 p-4 rounded-2 bg-primary col-lg-4 col-md-6 col-10"
-                    >
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1"
-                                >Which book have you read?</label
-                            >
-                            <input
-                                type="subject"
-                                class="form-control mb-3 mt-1"
-                                id="exampleFormControlInput1"
-                                placeholder="title"
-                            />
+                    <div class="col-xs-1 col-md-3 col-3"></div>
+                    <div class="card mb-4 p-0 col-xs-10 col-md-6 col-6">
+                        <div class="row g-0 bg-secondary p-md-4">
+                            <div class="col-2">
+                                <img src="" class="w-50 m-3" alt="" />
+                                <p class="text-center">name</p>
+                            </div>
+                            <div class="col-10">
+                                <div class="card-body">
+                                    <h5 class="card-title">title</h5>
+                                    ${media}
+                                    <p class="card-text">body</p>
+                                    <div>
+                                        <a
+                                            href="/post/?id=${post.id}"
+                                            class="card-text text-primary"
+                                        >
+                                            Read more
+                                        </a>
+                                        <div class="d-flex gap-4 mt-2">
+                                            <p class="m-0">66 likes</p>
+                                            <p class="m-0">33 comments</p>
+                                        </div>
+                                    </div>
+                                    <p class="card-text">
+                                        <small class="text-muted"
+                                            >Posted 2 days ago</small
+                                        >
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1"
-                                >What are your thoughts?</label
-                            >
-                            <textarea
-                                class="form-control mb-3 mt-1"
-                                id="exampleFormControlTextarea1"
-                                rows="3"
-                            ></textarea>
-                        </div>
-                        <div>
-                            <button
-                                type="submit"
-                                class="btn btn-customwhite mt-2"
-                            >
-                                Save
-                            </button>
-                            <button
-                                type="submit"
-                                class="btn btn-primary btn-outline-customwhite mt-2"
-                            >
-                                Delete
-                            </button>
-                        </div>
-                    </form>
-                    <div class="col-lg-4 col-md-3 col-1"></div>
+                    </div>
+                    <div class="col-xs-1 col-md-3 col-3"></div>
                 </div>
             </div>
             <img
