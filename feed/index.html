@@ -79,34 +79,37 @@
             <div class="container">
                 <div class="row pb-5 border-bottom">
                     <div class="col-lg-4 col-md-3 col-1"></div>
-                    <form
-                        class="mt-5 p-4 rounded-2 bg-primary col-lg-4 col-md-6 col-10"
-                    >
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1"
-                                >Which book have you read?</label
+                    <div class="col-lg-4 col-md-6 col-10" id="post-content">
+                        <form
+                            class="mt-5 p-4 rounded-2 bg-primary "
                             >
-                            <input
-                                type="subject"
-                                class="form-control mb-3 mt-1"
-                                id="exampleFormControlInput1"
-                                placeholder="title"
-                            />
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1"
-                                >What are your thoughts?</label
-                            >
-                            <textarea
-                                class="form-control mb-3 mt-1"
-                                id="exampleFormControlTextarea1"
-                                rows="3"
-                            ></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-customwhite mt-2">
-                            Publish
-                        </button>
-                    </form>
+                            <div class="form-group">
+                                <label for="postTitle"
+                                    >Which book have you read?</label
+                                >
+                                <input
+                                    type="subject"
+                                    class="form-control mb-3 mt-1"
+                                    id="postTitle"
+                                    placeholder="title"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="postBody"
+                                    >What are your thoughts?</label
+                                >
+                                <textarea
+                                    class="form-control mb-3 mt-1"
+                                    id="postBody"
+                                    rows="3"
+                                ></textarea>
+                            </div>
+                            <button type="button" class="btn btn-customwhite mt-2" id="publish-btn">
+                                Publish
+                            </button>
+                            </form>
+                    </div>
+                </div>
                     <div class="col-lg-4 col-md-3 col-1"></div>
                 </div>
                 <div class="row">

@@ -27,7 +27,7 @@ async function getPosts() {
 
 console.log(getPosts);
 
-function createPost(post) {
+function renderPost(post) {
     let media = "";
     if (post.media) {
         media = `<img class="img-fluid" src=${post.media.url} alt=${post.media.alt}/>`;
@@ -76,7 +76,7 @@ function createPost(post) {
 const posts = await getPosts();
 const postsContainer = document.getElementById("post-container");
 posts.forEach((post) => {
-    postsContainer.innerHTML += createPost(post);
+    postsContainer.innerHTML += renderPost(post);
 });
 
 console.log(posts);
@@ -101,6 +101,46 @@ sorting.addEventListener("change", function (event) {
         });
     }
     sortedPosts.forEach((post) => {
-        postsContainer.innerHTML += createPost(post);
+        postsContainer.innerHTML += renderPost(post);
     });
+});
+
+async function createPost(title, body) {
+    const endpoint = "/social/posts";
+    const url = BASE_URL + endpoint;
+    const method = "post";
+    const headers = {
+        "Content-type": "application/json; charset=UTF-8",
+        Authorization: `Bearer ${load("token")}`,
+        "X-Noroff-API-Key": API_KEY,
+    };
+
+    const request = await fetch(url, {
+        headers: headers,
+        method: method,
+        body: JSON.stringify({
+            title: title,
+            body: body,
+        }),
+    })
+        .then((response) => response.json())
+        .then(async (json) => {
+            console.log(json);
+            
+            const posts = await getPosts();
+            const postsContainer = document.getElementById("post-container");
+            posts.forEach((post) => {
+                postsContainer.innerHTML += renderPost(post);
+            });
+
+            console.log(posts);
+        });
+}
+
+const publish = document.getElementById("publish-btn");
+publish.addEventListener("click", function (event) {
+    const title = document.getElementById("postTitle");
+    const body = document.getElementById("postBody");
+    console.log(title.value, body.value);
+    createPost(title.value, body.value);
 });
