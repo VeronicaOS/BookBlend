@@ -126,9 +126,9 @@ async function createPost(title, body) {
         .then((response) => response.json())
         .then(async (json) => {
             console.log(json);
-            
             const posts = await getPosts();
             const postsContainer = document.getElementById("post-container");
+            postsContainer.innerHTML = "";
             posts.forEach((post) => {
                 postsContainer.innerHTML += renderPost(post);
             });

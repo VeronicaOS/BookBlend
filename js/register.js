@@ -12,9 +12,19 @@ registerForm.addEventListener("submit", function (event) {
         name: nameInput.value,
         email: emailInput.value,
         password: passwordInput.value,
-        // banner: bannerInput.value,
-        // avatar: avatarInput.value
     };
+
+    if (bannerInput.value) {
+        body.banner = {
+            url: bannerInput.value,
+        };
+    }
+
+    if (avatarInput.value) {
+        body.avatar = {
+            url: avatarInput.value,
+        };
+    }
 
     registerRequest(body);
     console.log(body);
