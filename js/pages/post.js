@@ -97,6 +97,10 @@ console.log(post);
 // Delete
 
 async function deletePost(postId) {
+    const confirmed = window.confirm("Are you sure you want to delete this post?");
+    if (!confirmed) {
+        return;
+    }
     const endpoint = `/social/posts/${postId}`;
     const url = BASE_URL + endpoint;
     const method = "delete";
@@ -116,3 +120,15 @@ const remove = document.getElementById("delete-btn");
 remove.addEventListener("click", function (event) {
     deletePost(post.id);
 });
+
+// const postDate = post.date.slice(0, 10);
+// const currentDate = new Date(postDate);
+// const currentDay = currentDate.getDate();
+// const curDay = currentDay < 10 ? "0" + currentDay : currentDay;
+// const currentMonth = currentDate.toLocaleString(`default`, {
+//     month: "long",
+// });
+// const currentYear = currentDate.getFullYear();
+// const curDate = `${curDay}. ${currentMonth} ${currentYear}`;
+
+// date.textContent = curDate;
