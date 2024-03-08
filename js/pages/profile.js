@@ -67,13 +67,13 @@ async function getPosts() {
 
 function createPost(post) {
     const template = `<div class="row">
-    <div class="col-md-2 col-1"></div>
-    <div class="card mb-4 p-0 col-md-8 col-10">
+    <div class="col-lg-3 col-md-2 col-1"></div>
+    <div class="card mb-4 p-0 col-lg-6 col-md-8 col-10">
         <div class="row g-0 bg-secondary">
             <div class="col-2">
                 <img
                     src=${post.author.avatar.url}
-                    class="w-50 m-3"
+                    class="w-75 m-3 rounded-circle img-fluid"
                     alt=${post.author.avatar.alt}
                 />
             </div>
@@ -84,7 +84,7 @@ function createPost(post) {
                     ${post.body}
                     </p>
                     <a
-                        href="#"
+                        href="/post/?id=${post.id}"
                         class="card-text text-primary"
                     >
                         Read more
@@ -98,7 +98,7 @@ function createPost(post) {
             </div>
         </div>
     </div>
-    <div class="col-md-2 col-1"></div>
+    <div class="col-lg-3 col-md-2 col-1"></div>
     </div>`;
     return template;
 }
@@ -110,5 +110,3 @@ posts.forEach((post) => {
 });
 
 console.log(posts);
-
-

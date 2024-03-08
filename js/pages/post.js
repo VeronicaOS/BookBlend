@@ -52,9 +52,9 @@ function renderPost(post) {
     Delete
 </button>`;
     }
-    const template = `<div class="col-md-2 col-1"></div>
-    <div class="card mb-4 p-0 col-md-8 col-10">
-        <div class="row g-0 bg-secondary p-md-4">
+    const template = `
+    <div class="card bg-secondary mb-4 p-0">
+        <div class="row g-0  p-2 p-md-4 pr-0">
             <div class="col-2">
             <img
             src=${post.author.avatar.url}
@@ -63,14 +63,12 @@ function renderPost(post) {
         />
                 <p class="text-center">${post.author.name}</p>
             </div>
-            <div class="col-10">
+            <div class="col-10 h-100">
                 <div class="card-body">
                     <h5 class="card-title">${post.title}</h5>
                     ${media}
                     <p class="card-text">${post.body}</p>
                     <div>
-                    ${updateBtn}
-                    ${deleteBtn}
                         <div class="d-flex gap-4 mt-2">
                             <p class="m-0">${post._count.reactions} likes</p>
                             <p class="m-0">${post._count.comments} comments</p>
@@ -81,11 +79,12 @@ function renderPost(post) {
                             >Posted ${post.created}</small
                         >
                     </p>
+                    ${updateBtn}
+                    ${deleteBtn}
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-2 col-1"></div>`;
+    </div>`;
     return template;
 }
 

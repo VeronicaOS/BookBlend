@@ -32,7 +32,7 @@ async function getPost() {
 getPost();
 
 function renderUpdatePost(post) {
-    const template = `<form class="mt-5 p-4 rounded-2 bg-primary">
+    const template = `<form class="p-4 rounded-2 bg-primary">
     <div class="form-group">
         <label for="postUpdateTitle"
             >Which book have you read?</label
@@ -107,4 +107,3 @@ save.addEventListener("click", function (event) {
     console.log(title.value, body.value);
     editPost(post.id, title.value, body.value);
 });
-

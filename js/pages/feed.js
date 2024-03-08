@@ -32,15 +32,14 @@ function renderPost(post) {
     if (post.media) {
         media = `<img class="img-fluid" src=${post.media.url} alt=${post.media.alt}/>`;
     }
-    const template = `<div class="col-md-2 col-1"></div>
-    <div class="card mb-4 p-0 col-md-8 col-10">
+    const template = `<div class="card mb-4 p-0">
         <div class="row g-0 bg-secondary p-md-4">
-            <div class="col-2">
+            <div class="col-2 d-flex flex-column align-items-center">
             <img
             src=${post.author.avatar.url}
-            class="w-50 m-3"
+            class="w-50 m-3 rounded-circle img-fluid"
             alt=${post.author.avatar.alt}
-        />
+            />
                 <p class="text-center">${post.author.name}</p>
             </div>
             <div class="col-10">
@@ -68,8 +67,7 @@ function renderPost(post) {
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-2 col-1"></div>`;
+    </div>`;
     return template;
 }
 
