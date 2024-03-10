@@ -9,6 +9,7 @@
         />
         <title>Veronica O. Svensson | BookBlend</title>
         <link rel="stylesheet" href="dist/css/index.css" />
+        <script type="module" src="js/login.js"></script>
     </head>
     <body class="vh-100 text-white bg-secondary">
         <header>
@@ -21,15 +22,19 @@
                 class="container p-5 d-flex flex-column justify-content-center align-items-center"
             >
                 <h2 class="text-black mt-5">Welcome</h2>
-                <form action="/profile/" class="mt-5 p-4 rounded-2 bg-primary">
+                <form
+                    id="login-form"
+                    action="/profile/"
+                    class="mt-5 p-4 rounded-2 bg-primary"
+                >
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label"
+                        <label for="InputEmail" class="form-label"
                             >Email address</label
                         >
                         <input
                             type="email"
                             class="form-control"
-                            id="exampleInputEmail1"
+                            id="email-input"
                             aria-describedby="emailHelp"
                             required
                         />
@@ -38,13 +43,13 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label"
+                        <label for="InputPassword" class="form-label"
                             >Password</label
                         >
                         <input
                             type="password"
                             class="form-control"
-                            id="exampleInputPassword1"
+                            id="password-input"
                             minlength="8"
                             required
                         />
@@ -52,9 +57,14 @@
                             >Forgot your password?</a
                         >
                     </div>
-                    <button type="submit" class="btn btn-customwhite mt-2">
+                    <button type="submit" class="btn btn-customwhite my-2">
                         Log in
                     </button>
+                    <div>
+                        <a class="form-text" href="/profile/register/index.html"
+                            >Don't have an account? Register here</a
+                        >
+                    </div>
                 </form>
             </div>
         </main>

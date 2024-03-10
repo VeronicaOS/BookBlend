@@ -1,0 +1,139 @@
+import { API_KEY, load, BASE_URL } from "../api/constants.js";
+
+const user = load("profile");
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const postId = urlParams.get("id");
+
+async function getPost() {
+    const endpoint = `/social/posts/${postId}?_author=true`;
+
+    const url = BASE_URL + endpoint;
+
+    const method = "get";
+
+    const headers = {
+        Authorization: `Bearer ${load("token")}`,
+        "X-Noroff-API-Key": API_KEY,
+    };
+
+    const response = await fetch(url, {
+        headers: headers,
+        method: method,
+    });
+
+    const data = await response.json();
+
+    return data.data;
+}
+
+getPost();
+
+function renderPost(post) {
+    const postDate = post.updated.slice(0, 10);
+    const currentDate = new Date(postDate);
+    const currentDay = currentDate.getDate();
+    const curDay = currentDay < 10 ? "0" + currentDay : currentDay;
+    const currentMonth = currentDate.toLocaleString(`default`, {
+        month: "long",
+    });
+    const currentYear = currentDate.getFullYear();
+    const curDate = `${curDay}. ${currentMonth} ${currentYear}`;
+    let media = "";
+    if (post.media) {
+        media = `<img class="img-fluid" src=${post.media.url} alt=${post.media.alt}/>`;
+    }
+    let updateBtn = "";
+    let deleteBtn = "";
+    if (post.author.email == user.email) {
+        updateBtn = `<a
+        href="/postEdit/?id=${post.id}"
+        class="btn btn-primary mt-2"
+    >
+        Edit
+    </a>`;
+        deleteBtn = `<button type="button" class="btn btn-customwhite mt-2" id="delete-btn">
+    Delete
+</button>`;
+    }
+    const template = `
+    <div class="card bg-secondary mb-4 p-0">
+        <div class="row g-0  p-2 p-md-4 pr-0">
+            <div class="col-2">
+            <img
+            src=${post.author.avatar.url}
+            class="w-50 m-3"
+            alt=${post.author.avatar.alt}
+        />
+                <p class="text-center">${post.author.name}</p>
+            </div>
+            <div class="col-10 h-100">
+                <div class="card-body">
+                    <h5 class="card-title">${post.title}</h5>
+                    ${media}
+                    <p class="card-text">${post.body}</p>
+                    <div>
+                        <div class="d-flex gap-4 mt-2">
+                            <p class="m-0">${post._count.reactions} likes</p>
+                            <p class="m-0">${post._count.comments} comments</p>
+                        </div>
+                    </div>
+                    <p class="card-text">
+                        <small class="text-muted"
+                            >Posted ${curDate}</small
+                        >
+                    </p>
+                    ${updateBtn}
+                    ${deleteBtn}
+                </div>
+            </div>
+        </div>
+    </div>`;
+    return template;
+}
+
+const post = await getPost();
+const viewPost = document.getElementById("view-post");
+viewPost.innerHTML = renderPost(post);
+
+// Delete
+
+async function deletePost(postId) {
+    const confirmed = window.confirm(
+        "Are you sure you want to delete this post?"
+    );
+    if (!confirmed) {
+        return;
+    }
+    const endpoint = `/social/posts/${postId}`;
+    const url = BASE_URL + endpoint;
+    const method = "delete";
+    const headers = {
+        Authorization: `Bearer ${load("token")}`,
+        "X-Noroff-API-Key": API_KEY,
+    };
+
+    const request = await fetch(url, {
+        headers: headers,
+        method: method,
+    });
+    window.location.href = `/feed`;
+}
+
+const remove = document.getElementById("delete-btn");
+remove.addEventListener("click", function (event) {
+    deletePost(post.id);
+});
+
+// const postDate = post.date.slice(0, 10);
+// const currentDate = new Date(postDate);
+// const currentDay = currentDate.getDate();
+// const curDay = currentDay < 10 ? "0" + currentDay : currentDay;
+// const currentMonth = currentDate.toLocaleString(`default`, {
+//     month: "long",
+// });
+// const currentYear = currentDate.getFullYear();
+// const curDate = `${curDay}. ${currentMonth} ${currentYear}`;
+
+// date.textContent = curDate;
