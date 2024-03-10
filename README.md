@@ -1,5 +1,8 @@
 # BookBlend (css-frameworks-ca)
 
+<img width="1434" alt="Screenshot 2024-03-10 at 19 21 33" src="https://github.com/VeronicaOS/BookBlend/assets/126082037/0e5b1b4e-9f1a-4709-9e28-94695eb8effd">
+
+
 For this project I was tasked to create a social media application and I could choose the design and the topic. I chose to create a page for book lovers and named it BookBlend. This is a social media application for all the book lovers who want to share their passion and thoughts on books.
 
 ## Description
