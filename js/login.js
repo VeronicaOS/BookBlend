@@ -1,6 +1,7 @@
 const logInForm = document.getElementById("login-form");
 const emailInput = document.getElementById("email-input");
 const passwordInput = document.getElementById("password-input");
+let emailHelp = document.getElementById("emailHelp");
 
 logInForm.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -23,20 +24,18 @@ async function logInRequest(body) {
         headers: headers,
         method: method,
         body: body,
-    });
+    })
+        .then((response) => response.json())
+        .then(async (data) => {
+            const { accessToken: token, ...profile } = data.data;
+            localStorage.setItem("token", JSON.stringify(token));
+            localStorage.setItem("profile", JSON.stringify(profile));
 
-    console.log(response);
-
-    const data = await response.json();
-    console.log(data);
-
-    if (response.ok) {
-        const { accessToken: token, ...profile } = data.data;
-        console.log(token);
-        console.log(profile);
-        localStorage.setItem("token", JSON.stringify(token));
-        localStorage.setItem("profile", JSON.stringify(profile));
-
-        window.location.href = "/profile/?name=" + profile.name;
-    }
+            window.location.href = "/profile/?name=" + profile.name;
+        })
+        .catch((reject) => {
+            emailHelp.style.color = "green";
+            emailHelp.style.fontSize = "large";
+            emailHelp.innerHTML = "Wrong email or password...";
+        });
 }

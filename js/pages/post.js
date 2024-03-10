@@ -1,7 +1,6 @@
-import { API_KEY, load, BASE_URL } from "../api/constants.mjs";
+import { API_KEY, load, BASE_URL } from "../api/constants.js";
 
 const user = load("profile");
-console.log(user);
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -24,17 +23,23 @@ async function getPost() {
         method: method,
     });
 
-    console.log(response);
-
     const data = await response.json();
 
-    console.log(data.data);
     return data.data;
 }
 
 getPost();
 
 function renderPost(post) {
+    const postDate = post.updated.slice(0, 10);
+    const currentDate = new Date(postDate);
+    const currentDay = currentDate.getDate();
+    const curDay = currentDay < 10 ? "0" + currentDay : currentDay;
+    const currentMonth = currentDate.toLocaleString(`default`, {
+        month: "long",
+    });
+    const currentYear = currentDate.getFullYear();
+    const curDate = `${curDay}. ${currentMonth} ${currentYear}`;
     let media = "";
     if (post.media) {
         media = `<img class="img-fluid" src=${post.media.url} alt=${post.media.alt}/>`;
@@ -76,7 +81,7 @@ function renderPost(post) {
                     </div>
                     <p class="card-text">
                         <small class="text-muted"
-                            >Posted ${post.created}</small
+                            >Posted ${curDate}</small
                         >
                     </p>
                     ${updateBtn}
@@ -92,12 +97,12 @@ const post = await getPost();
 const viewPost = document.getElementById("view-post");
 viewPost.innerHTML = renderPost(post);
 
-console.log(post);
-
 // Delete
 
 async function deletePost(postId) {
-    const confirmed = window.confirm("Are you sure you want to delete this post?");
+    const confirmed = window.confirm(
+        "Are you sure you want to delete this post?"
+    );
     if (!confirmed) {
         return;
     }

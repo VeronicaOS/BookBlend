@@ -1,8 +1,6 @@
-import { API_KEY, load, BASE_URL } from "../api/constants.mjs";
+import { API_KEY, load, BASE_URL } from "../api/constants.js";
 
 const user = load("profile");
-
-console.log(user);
 
 let params = new URLSearchParams(window.location.search);
 let name = params.get("name");
@@ -27,10 +25,7 @@ const response = await fetch(url, {
     method: method,
 });
 
-console.log(response);
-
 const data = await response.json();
-console.log(data);
 
 const profileData = data.data;
 
@@ -57,15 +52,21 @@ async function getPosts() {
         method: method,
     });
 
-    console.log(response);
-
     const data = await response.json();
 
-    console.log(data);
     return data.data;
 }
 
 function createPost(post) {
+    const postDate = post.updated.slice(0, 10);
+    const currentDate = new Date(postDate);
+    const currentDay = currentDate.getDate();
+    const curDay = currentDay < 10 ? "0" + currentDay : currentDay;
+    const currentMonth = currentDate.toLocaleString(`default`, {
+        month: "long",
+    });
+    const currentYear = currentDate.getFullYear();
+    const curDate = `${curDay}. ${currentMonth} ${currentYear}`;
     const template = `<div class="row">
     <div class="col-lg-3 col-md-2 col-1"></div>
     <div class="card mb-4 p-0 col-lg-6 col-md-8 col-10">
@@ -87,11 +88,11 @@ function createPost(post) {
                         href="/post/?id=${post.id}"
                         class="card-text text-primary"
                     >
-                        Read more
+                        View
                     </a>
                     <p class="card-text">
                         <small class="text-muted"
-                            >Posted ${post.created}</small
+                            >Posted ${curDate}</small
                         >
                     </p>
                 </div>
@@ -108,5 +109,3 @@ const postsContainer = document.getElementById("post-container");
 posts.forEach((post) => {
     postsContainer.innerHTML += createPost(post);
 });
-
-console.log(posts);

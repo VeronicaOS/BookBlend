@@ -1,4 +1,4 @@
-import { API_KEY, load, BASE_URL } from "../api/constants.mjs";
+import { API_KEY, load, BASE_URL } from "../api/constants.js";
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -21,14 +21,10 @@ async function getPost() {
         method: method,
     });
 
-    console.log(response);
-
     const data = await response.json();
 
-    console.log(data.data);
     return data.data;
 }
-
 getPost();
 
 function renderUpdatePost(post) {
@@ -71,9 +67,32 @@ const post = await getPost();
 const updatePost = document.getElementById("update-post");
 updatePost.innerHTML = renderUpdatePost(post);
 
-console.log(post);
-
 // update
+
+/**
+ * Asynchronously edits a specific post on the social platform API.
+ *
+ * @async
+ * @function
+ * @param {string} postId - The unique identifier of the post to be edited.
+ * @param {string} title - The updated title for the post.
+ * @param {string} body - The updated body content for the post.
+ * @returns {Promise<void>} A Promise that resolves when the post is successfully edited.
+ *
+ * @description This asynchronous function sends a PUT request to the social platform API
+ * to edit a specific post identified by the given postId. It updates the post's title and body
+ * with the provided values. After a successful edit, it redirects the user to the edited post's page.
+ *
+ * @example
+ * ```js
+ * // Usage example:
+ * const postId = "1116";
+ * const updatedTitle = "test";
+ * const updatedBody = "testing 3 2 1";
+ * const request = sends you back to the post page with title and body
+ * //expect the post to be updated when you return to the post page.
+ * ```
+ */
 
 async function editPost(postId, title, body) {
     const endpoint = `/social/posts/${postId}`;
@@ -95,7 +114,6 @@ async function editPost(postId, title, body) {
     })
         .then((response) => response.json())
         .then(async (json) => {
-            console.log(json);
             window.location.href = `/post/?id=${post.id}`;
         });
 }
@@ -104,6 +122,5 @@ const save = document.getElementById("save-btn");
 save.addEventListener("click", function (event) {
     const title = document.getElementById("postUpdateTitle");
     const body = document.getElementById("postUpdateBody");
-    console.log(title.value, body.value);
     editPost(post.id, title.value, body.value);
 });

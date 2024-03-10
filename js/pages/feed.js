@@ -1,4 +1,8 @@
-import { API_KEY, load, BASE_URL } from "../api/constants.mjs";
+import { API_KEY, load, BASE_URL } from "../api/constants.js";
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const searchTerm = urlParams.get("search");
 
 async function getPosts() {
     const endpoint = "/social/posts/?_author=true";
@@ -17,17 +21,29 @@ async function getPosts() {
         method: method,
     });
 
-    console.log(response);
-
     const data = await response.json();
 
-    console.log(data);
-    return data.data;
+    if (searchTerm) {
+        return data.data.filter(
+            (item) =>
+                item.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                item.body?.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+    } else {
+        return data.data;
+    }
 }
 
-console.log(getPosts);
-
 function renderPost(post) {
+    const postDate = post.updated.slice(0, 10);
+    const currentDate = new Date(postDate);
+    const currentDay = currentDate.getDate();
+    const curDay = currentDay < 10 ? "0" + currentDay : currentDay;
+    const currentMonth = currentDate.toLocaleString(`default`, {
+        month: "long",
+    });
+    const currentYear = currentDate.getFullYear();
+    const curDate = `${curDay}. ${currentMonth} ${currentYear}`;
     let media = "";
     if (post.media) {
         media = `<img class="img-fluid" src=${post.media.url} alt=${post.media.alt}/>`;
@@ -36,11 +52,11 @@ function renderPost(post) {
         <div class="row g-0 bg-secondary p-md-4">
             <div class="col-2 d-flex flex-column align-items-center">
             <img
-            src=${post.author.avatar.url}
+            src=${post.author?.avatar.url}
             class="w-50 m-3 rounded-circle img-fluid"
-            alt=${post.author.avatar.alt}
+            alt=${post.author?.avatar.alt}
             />
-                <p class="text-center">${post.author.name}</p>
+                <p class="text-center">${post.author?.name}</p>
             </div>
             <div class="col-10">
                 <div class="card-body">
@@ -52,7 +68,7 @@ function renderPost(post) {
                             href="/post/?id=${post.id}"
                             class="card-text text-primary"
                         >
-                            Read more
+                            View
                         </a>
                         <div class="d-flex gap-4 mt-2">
                             <p class="m-0">${post._count.reactions} likes</p>
@@ -61,7 +77,7 @@ function renderPost(post) {
                     </div>
                     <p class="card-text">
                         <small class="text-muted"
-                            >Posted ${post.created}</small
+                            >Posted ${curDate}</small
                         >
                     </p>
                 </div>
@@ -72,17 +88,15 @@ function renderPost(post) {
 }
 
 const posts = await getPosts();
+
 const postsContainer = document.getElementById("post-container");
 posts.forEach((post) => {
     postsContainer.innerHTML += renderPost(post);
 });
 
-console.log(posts);
-
 const sorting = document.getElementById("sort-by");
 sorting.addEventListener("change", function (event) {
     const value = event.target.value;
-    console.log(value);
     postsContainer.innerHTML = "";
     let sortedPosts;
     if (value === "newest") {
@@ -123,15 +137,12 @@ async function createPost(title, body) {
     })
         .then((response) => response.json())
         .then(async (json) => {
-            console.log(json);
             const posts = await getPosts();
             const postsContainer = document.getElementById("post-container");
             postsContainer.innerHTML = "";
             posts.forEach((post) => {
                 postsContainer.innerHTML += renderPost(post);
             });
-
-            console.log(posts);
         });
 }
 
@@ -139,6 +150,5 @@ const publish = document.getElementById("publish-btn");
 publish.addEventListener("click", function (event) {
     const title = document.getElementById("postTitle");
     const body = document.getElementById("postBody");
-    console.log(title.value, body.value);
     createPost(title.value, body.value);
 });
